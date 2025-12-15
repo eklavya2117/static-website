@@ -50,7 +50,7 @@ pipeline {
             steps {
                 sshagent(['lamp-ec2-key']) {
                     sh """
-                        ssh -o StrictHostKeyChecking=no ec2-user@${LAMP_SERVER} '
+                        ssh -o StrictHostKeyChecking=no ubuntu@${LAMP_SERVER} '
                           docker pull ${IMAGE_NAME}:latest
                           docker stop website || true
                           docker rm website || true
