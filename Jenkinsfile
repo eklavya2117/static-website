@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'jenkins-agent' }
+    agent { label 'MySlaveConfigServer' }
 
     environment {
         // 🔴 CHANGE #1
