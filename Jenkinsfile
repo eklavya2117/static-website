@@ -2,13 +2,8 @@ pipeline {
     agent { label 'MySlaveConfigServer' }
 
     environment {
-        // 🔴 CHANGE #1
         IMAGE_NAME = "eklavya2117/static-website"
-
-        // Auto-generated build number
         TAG = "${BUILD_NUMBER}"
-
-        // 🔴 CHANGE #2
         LAMP_SERVER = "13.62.228.20"
     }
 
@@ -67,10 +62,10 @@ pipeline {
 
     post {
         success {
-            echo "✅ Website deployed successfully!"
+            echo " Website deployed successfully!"
         }
         failure {
-            echo "❌ Deployment failed!"
+            echo " Deployment failed!"
         }
     }
 }
