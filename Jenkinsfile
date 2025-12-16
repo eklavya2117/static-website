@@ -4,7 +4,7 @@ pipeline {
     environment {
         IMAGE_NAME = "eklavya2117/static-website"
         TAG = "${BUILD_NUMBER}"
-        LAMP_SERVER = "13.62.228.20"
+        LAMP_SERVER = "51.20.119.77"
     }
 
     stages {
@@ -13,6 +13,25 @@ pipeline {
             steps {
                 git branch: 'main',
                     url: 'https://github.com/eklavya2117/static-website.git'
+            }
+        }
+
+        stage('Build Application') {
+            steps {
+                echo "Building static website..."
+                sh '''
+                    rm -rf dist
+                    mkdir dist
+                    cp index.html dist/
+                    tar -czf static-website-build-${BUILD_NUMBER}.tar.gz dist
+                '''
+            }
+        }
+
+        stage('Archive Build Artifacts') {
+            steps {
+                archiveArtifacts artifacts: 'static-website-build-*.tar.gz',
+                                 fingerprint: true
             }
         }
 
@@ -69,4 +88,3 @@ pipeline {
         }
     }
 }
-
