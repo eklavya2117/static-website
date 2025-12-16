@@ -4,7 +4,7 @@ pipeline {
     environment {
         IMAGE_NAME = "eklavya2117/static-website"
         TAG = "${BUILD_NUMBER}"
-        LAMP_SERVER = "51.20.119.77"
+        LAMP_SERVER = "16.170.217.58"
     }
 
     stages {
